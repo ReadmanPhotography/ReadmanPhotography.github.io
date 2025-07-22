@@ -1,0 +1,157 @@
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Base dark theme */
+body, html {
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: #ddd;
+    font-family: Arial, sans-serif;
+}
+a { text-decoration: none; color: inherit; }
+
+/* Fullscreen Banner */
+.banner {
+    width: 100vw;
+    height: 100vh;
+    background: url('images/banner.webp') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    overflow-x: hidden;
+}
+
+/* Banner text - stacked vertically */
+.banner-text {
+    background: rgba(0,0,0,0.6);
+    padding: 20px 30px;
+    border-radius: 6px;
+    max-width: 400px;
+    display: block; /* stack vertically */
+}
+
+.banner-text h1 {
+    margin: 0 0 5px 0;
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    color: #eee;
+    opacity: 0;
+    animation: fadeInText 2s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.banner-text p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Galleries label (used for Store label too) */
+.galleries-label {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    color: #ddd;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Galleries (now store items) */
+.galleries {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 40px; margin: 50px 20px;
+}
+.gallery-tile {
+    position: relative; width: 420px; height: 280px;
+    overflow: hidden; border-radius: 6px;
+    background: #1c1c1c;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    cursor: pointer; transition: box-shadow 0.3s;
+}
+.gallery-tile:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.9); }
+.gallery-tile img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.3s;
+}
+.gallery-tile:hover img { transform: scale(1.05); }
+.gallery-title {
+    position: absolute; bottom: 0; width: 100%;
+    background: rgba(0,0,0,0.85); color: #eee;
+    font-family: Georgia, serif; font-size: 1.3rem;
+    font-weight: 600; text-align: center; padding: 14px 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+}
+
+/* Instagram Grid */
+.instagram-section {
+    max-width: 900px; margin: 60px auto; padding: 20px;
+}
+.instagram-title {
+    font-family: Georgia, serif; font-size: 2.2rem;
+    color: #ddd; text-align: center; margin-bottom: 20px;
+}
+.insta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+.insta-grid a {
+    display: block; border-radius: 4px; overflow: hidden;
+}
+.insta-grid img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+}
+
+/* Contact */
+.contact {
+    text-align: center; margin: 50px 0;
+    font-family: Arial, sans-serif; font-size: 1.4rem;
+    color: #bbb;
+}
+.contact a { color: #eee; font-weight: 700; }
+
+/* Animations */
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .gallery-tile { width: 90vw; height: 240px; }
+    .banner-text h1 { font-size: 2.5rem; }
+    .banner-text p { font-size: 1rem; }
+}
+
+/* Container wrapping galleries and store */
+.content-with-blur {
+    position: relative;
+    background: #121212; /* gray background behind galleries/store */
+    padding: 40px 20px 80px 20px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Blur background only covers container */
+.content-with-blur .bg-blur {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(20px) brightness(0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.content-with-blur .bg-blur.visible {
+    opacity: 1;
+    z-index

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Readman Photography</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Banner (full viewport, no blur effect here) -->
+  <section class="banner">
+    <div class="banner-text">
+      <h1>Readman Photography</h1>
+      <p>Explore my galleries below</p>
+    </div>
+  </section>
+
+  <!-- Container wraps galleries + store + blur background -->
+  <div class="content-with-blur" id="contentBlurContainer">
+
+    <!-- Blur background inside container -->
+    <div class="bg-blur" id="bgBlur"></div>
+
+    <!-- Galleries Label -->
+    <h2 class="galleries-label">Galleries</h2>
+
+    <!-- Galleries -->
+    <section class="galleries" aria-label="Photography Galleries">
+      <a href="birds.html" class="gallery-tile birds">
+        <img src="images/birds.webp" alt="Birds Gallery Preview" />
+        <div class="gallery-title">Birds</div>
+      </a>
+      <a href="portraits.html" class="gallery-tile portraits">
+        <img src="images/portrait.webp" alt="Portraits Gallery Preview" />
+        <div class="gallery-title">Portraits</div>
+      </a>
+      <a href="pets.html" class="gallery-tile pets">
+        <img src="images/pets.webp" alt="Pets Gallery Preview" />
+        <div class="gallery-title">Pets</div>
+      </a>
+    </section>
+
+    <!-- Store Label -->
+    <h2 class="galleries-label">Store</h2>
+
+    <!-- Store Section -->
+    <section class="galleries" aria-label="Store Items">
+      <a href="https://readmanphotography-shop.fourthwall.com/en-gbp/collections/mugs" target="_blank" rel="noopener noreferrer" class="gallery-tile mugs">
+        <img src="images/mugs.webp" alt="Mugs Store Preview" />
+        <div class="gallery-title">Mugs</div>
+      </a>
+      <a href="https://readmanphotography-shop.fourthwall.com/en-gbp/collections/canvas-prints" target="_blank" rel="noopener noreferrer" class="gallery-tile prints">
+        <img src="images/prints.webp" alt="Prints Store Preview" />
+        <div class="gallery-title">Prints</div>
+      </a>
+      <a href="https://readmanphotography-shop.fourthwall.com/en-gbp/collections/merch" target="_blank" rel="noopener noreferrer" class="gallery-tile merch">
+        <img src="images/merch.webp" alt="Merch Store Preview" />
+        <div class="gallery-title">Merch</div>
+      </a>
+    </section>
+
+  </div>
+
+  <!-- Contact -->
+  <footer class="contact">
+    <p>Contact me at <a href="mailto:ReadmanPhotography@outlook.com">ReadmanPhotography@outlook.com</a></p>
+  </footer>
+
+  <script>
+    const bgBlur = document.getElementById('bgBlur');
+
+    // Select only gallery tiles inside the first galleries section (Galleries, NOT Store)
+    const galleryTiles = document.querySelectorAll('.galleries:first-of-type .gallery-tile');
+
+    galleryTiles.forEach(tile => {
+      const img = tile.querySelector('img');
+
+      tile.addEventListener('mouseenter', () => {
+        bgBlur.style.backgroundImage = `url('${img.src}')`;
+        bgBlur.classList.add('visible');
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        bgBlur.classList.remove('visible');
+        bgBlur.style.backgroundImage = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
